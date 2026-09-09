@@ -39,10 +39,14 @@ export function Header({ onOrder }: { onOrder: () => void }) {
             <Button
               className="bag-button"
               onClick={onOrder}
-              aria-label={`Замовити. У кошику ${count} страв`}
+              aria-label={`${business.orderChannel === 'none' ? 'Зібрати замовлення' : 'Замовити'}. У кошику ${count} страв`}
             >
               <ShoppingBag size={18} />
-              <span>Замовити</span>
+              <span>
+                {business.orderChannel === 'none'
+                  ? 'Зібрати замовлення'
+                  : 'Замовити'}
+              </span>
               <b>{count}</b>
             </Button>
             <Button
@@ -94,7 +98,10 @@ export function Header({ onOrder }: { onOrder: () => void }) {
               onOrder();
             }}
           >
-            Замовити <ShoppingBag />
+            {business.orderChannel === 'none'
+              ? 'Зібрати замовлення'
+              : 'Замовити'}{' '}
+            <ShoppingBag />
           </Button>
         </SheetContent>
       </Sheet>

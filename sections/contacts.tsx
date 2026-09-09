@@ -16,20 +16,22 @@ export function Contacts() {
             <br />
             Наша точка — на Космонавтів, біля парку.
           </p>
-          <div className="contact-lines">
-            <p>
-              <Clock size={19} />
-              {business.openingHours || 'Графік роботи уточнюється'}
-            </p>
-            {business.phone ? (
-              <a href={`tel:${business.phone}`}>
-                <Phone size={19} />
-                {business.phone}
-              </a>
-            ) : (
-              <p>Контактний номер буде додано після підтвердження закладом.</p>
-            )}
-          </div>
+          {(business.openingHours || business.phone) && (
+            <div className="contact-lines">
+              {business.openingHours && (
+                <p>
+                  <Clock size={19} />
+                  {business.openingHours}
+                </p>
+              )}
+              {business.phone && (
+                <a href={`tel:${business.phone}`}>
+                  <Phone size={19} />
+                  {business.phone}
+                </a>
+              )}
+            </div>
+          )}
           <div className="contact-actions">
             {business.googleMapsUrl && (
               <a

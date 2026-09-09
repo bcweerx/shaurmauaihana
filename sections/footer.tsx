@@ -18,10 +18,7 @@ export function Footer() {
       )}
       <p>
         © {new Date().getFullYear()} {business.name}.{' '}
-        {business.ownerVerified
-          ? ''
-          : 'Презентаційна версія для погодження із закладом. '}
-        Обкладинка — AI-ілюстрація.
+        {business.ownerVerified ? '' : 'Версія для погодження із закладом.'}
       </p>
     </footer>
   );

@@ -1936,7 +1936,7 @@ body {
     min-height: 44px !important;
   }
   .menu-toolbar {
-    margin: 10px 0 16px;
+    display: none;
   }
   .results-heading h3 {
     font-size: 21px;

@@ -41,9 +41,8 @@ export function MenuSection({ onAdded }: { onAdded: (name: string) => void }) {
       <div className="menu-notice">
         <span className="status-pill">МЕНЮ GLOVO</span>
         <p>
-          Ціни та акції з Glovo на{' '}
-          {menuCapturedAt.split('-').reverse().join('.')}. У закладі вони можуть
-          відрізнятися.{' '}
+          Ціни з Glovo від {menuCapturedAt.split('-').reverse().join('.')}. У
+          закладі сума може відрізнятися.{' '}
           <a href={menuSource} target="_blank" rel="noreferrer">
             Джерело меню ↗
           </a>

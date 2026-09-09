@@ -117,14 +117,15 @@ export function CartDrawer({
                   className="primary-link"
                   onClick={() => setReview(true)}
                 >
-                  Замовити <ArrowUpRight />
+                  {destination ? 'Перейти до замовлення' : 'Сформувати список'}{' '}
+                  <ArrowUpRight />
                 </Button>
               ) : (
                 <div className="checkout-options">
                   <h3>
                     {destination
                       ? 'Залишився один крок'
-                      : 'Онлайн-замовлення готується'}
+                      : 'Список до замовлення готовий'}
                   </h3>
                   <p>
                     {destination

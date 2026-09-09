@@ -103,7 +103,7 @@ python scripts/normalize-menu.py
 4. Включите для build `ENABLE_EXPERIMENTAL_COREPACK=1`, чтобы Vercel использовал закреплённый `pnpm@11.19.0` из `packageManager`. При CLI deployment передайте `--build-env ENABLE_EXPERIMENTAL_COREPACK=1`. Создайте preview с выключенной индексацией; проверьте навигацию, корзину, изображения и `/robots.txt` на выданном URL.
 5. После подтверждения владельцем заполните канал заказа, часы и домен, пересоберите и проверьте реальный контакт вручную. Индексацию включайте отдельным осознанным изменением.
 
-Конфигурация следует [документации Vercel для Vite](https://vercel.com/docs/frameworks/frontend/vite). Актуальный временный preview уже опубликован: [preview-source-p4sx9ydut-artemkovko-3474.vercel.app](https://preview-source-p4sx9ydut-artemkovko-3474.vercel.app/). Deployment создан без `--prod` и без custom domain, с `target: null`; индексация остаётся выключенной. Отдельных маршрутов приложения нет: используются секции с якорями; сгенерирована страница `404.html`.
+Конфигурация следует [документации Vercel для Vite](https://vercel.com/docs/frameworks/frontend/vite). Актуальный временный preview уже опубликован: [preview-source-auparodre-artemkovko-3474.vercel.app](https://preview-source-auparodre-artemkovko-3474.vercel.app/). Deployment создан без `--prod` и без custom domain, с `target: null`; индексация остаётся выключенной. Отдельных маршрутов приложения нет: используются секции с якорями; сгенерирована страница `404.html`.
 
 ## Чистота репозитория
 

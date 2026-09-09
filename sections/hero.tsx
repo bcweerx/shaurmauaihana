@@ -24,7 +24,10 @@ export function Hero({ onOrder }: { onOrder: () => void }) {
               Подивитися меню <ArrowUpRight />
             </a>
             <Button className="secondary-cta" onClick={onOrder}>
-              Замовити <ArrowUpRight size={18} />
+              {business.orderChannel === 'none'
+                ? 'Зібрати замовлення'
+                : 'Замовити'}{' '}
+              <ArrowUpRight size={18} />
             </Button>
           </div>
           <a className="hero-location" href="#place">

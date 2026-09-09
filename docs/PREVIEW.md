@@ -29,14 +29,14 @@
 
 После авторизации выполнен только временный preview deployment:
 
-- URL: https://preview-source-p4sx9ydut-artemkovko-3474.vercel.app/
-- inspect: https://vercel.com/artemkovko-3474/preview-source/6G5qTrVKv2Bg2MyXoXkjy7iTDGG7
-- deployment id: `dpl_6G5qTrVKv2Bg2MyXoXkjy7iTDGG7`
+- URL: https://preview-source-auparodre-artemkovko-3474.vercel.app/
+- inspect: https://vercel.com/artemkovko-3474/preview-source/3yxudDKtJSCtguRVqxPbXuUuoDsd
+- deployment id: `dpl_3yxudDKtJSCtguRVqxPbXuUuoDsd`
 - состояние: `READY`, `target: null`
 - custom domain и `--prod` не использовались
 - build: Vite / `pnpm run build` / `dist`
 
-Удалённая проверка подтвердила главную страницу, меню, изображения, мобильную навигацию, поиск, фильтры, корзину с восстановлением после reload, отсутствие console errors и горизонтального overflow. HTML публичной страницы содержит `noindex,nofollow`. В локально собранном `dist/robots.txt` сохранено `User-agent: *` и `Disallow: /`; прямое открытие robots endpoint встроенный браузер блокирует как служебный URL.
+Удалённая проверка подтвердила главную страницу, меню, изображения, мобильную навигацию, поиск, фильтры, корзину с восстановлением после reload, отсутствие console errors и горизонтального overflow. После коммерческой полировки CTA без подключённого канала говорят «Зібрати замовлення», мобильные категории используют один компактный select, неподтверждённые контактные поля скрыты, а AI-пометка удалена из footer. HTML публичной страницы содержит `noindex,nofollow`. В локально собранном `dist/robots.txt` сохранено `User-agent: *` и `Disallow: /`; прямое открытие robots endpoint встроенный браузер блокирует как служебный URL.
 
 ## Последний прогон
 
