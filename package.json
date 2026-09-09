@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=22.13.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "vite",
-    "build": "pnpm typecheck && vite build && vite build --ssr scripts/prerender.tsx --outDir .prerender && node scripts/prepare-site.mjs",
+    "build": "pnpm typecheck && vite build && vite build --ssr scripts/prerender.tsx --outDir .prerender && node scripts/prepare-site.mjs && node scripts/check-build.mjs",
     "start": "vite preview",
     "lint": "oxlint",
     "format": "oxfmt",
     "typecheck": "tsc --noEmit",
-    "test": "vite build --ssr tests/core.test.ts --outDir work/tests && node --test work/tests/core.test.js"
+    "test": "vite build --ssr tests/core.test.ts --outDir .test-build && node --test .test-build/core.test.js"
   },
   "dependencies": {
     "react": "19.2.6",

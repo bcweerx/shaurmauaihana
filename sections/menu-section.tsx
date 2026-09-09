@@ -25,11 +25,11 @@ export function MenuSection({ onAdded }: { onAdded: (name: string) => void }) {
     >
       <div className="section-heading">
         <div>
-          <p className="eyebrow">01 / ЩО ОБЕРЕШ СЬОГОДНІ?</p>
+          <p className="eyebrow">ЩО ОБЕРЕШ СЬОГОДНІ?</p>
           <h2 id="menu-title">
             Є НАСТРІЙ.
             <br />
-            <span>Є ШАВЕРМА.</span>
+            <span>Є ШАУРМА.</span>
           </h2>
         </div>
         <p className="section-aside">
@@ -41,7 +41,8 @@ export function MenuSection({ onAdded }: { onAdded: (name: string) => void }) {
       <div className="menu-notice">
         <span className="status-pill">МЕНЮ GLOVO</span>
         <p>
-          Ціни та акції з Glovo на {menuCapturedAt.split('-').reverse().join('.')}. У закладі вони можуть
+          Ціни та акції з Glovo на{' '}
+          {menuCapturedAt.split('-').reverse().join('.')}. У закладі вони можуть
           відрізнятися.{' '}
           <a href={menuSource} target="_blank" rel="noreferrer">
             Джерело меню ↗

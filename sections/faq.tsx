@@ -3,7 +3,7 @@ export function Faq() {
   return (
     <section className="faq wrap" id="questions" aria-labelledby="faq-title">
       <div>
-        <p className="eyebrow">04 / БЕЗ ЗАЙВИХ ПИТАНЬ</p>
+        <p className="eyebrow">БЕЗ ЗАЙВИХ ПИТАНЬ</p>
         <h2 id="faq-title">ВАРТО ЗНАТИ.</h2>
       </div>
       <div className="faq-items">

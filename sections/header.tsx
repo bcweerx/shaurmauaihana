@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Menu, ShoppingBag, X } from 'lucide-react';
 import { Brand } from '../components/brand';
+import { business } from '../config/business';
 import { Button } from '../components/ui/button';
 import {
   Sheet,
@@ -72,7 +73,9 @@ export function Header({ onOrder }: { onOrder: () => void }) {
               <X />
             </SheetClose>
           </div>
-          <SheetDescription>Шаверма Айхана · Одеса</SheetDescription>
+          <SheetDescription>
+            {business.name} · {business.city}
+          </SheetDescription>
           <nav aria-label="Мобільна навігація">
             {links.map((link) => (
               <a

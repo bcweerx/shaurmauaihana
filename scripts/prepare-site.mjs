@@ -1,7 +1,11 @@
 import fs from 'node:fs/promises';
+import { loadEnv } from 'vite';
 import business from '../config/business.json' with { type: 'json' };
 import { render } from '../.prerender/prerender.js';
-const rawUrl = process.env.SITE_URL || business.siteUrl;
+const rawUrl =
+  process.env.SITE_URL ||
+  loadEnv('production', process.cwd(), 'SITE_URL').SITE_URL ||
+  business.siteUrl;
 let siteUrl = null;
 if (rawUrl) {
   const parsed = new URL(rawUrl);
@@ -45,7 +49,7 @@ const metadata = [
   `<title>${escape(title)}</title>`,
   `<meta name="description" content="${escape(business.description)}">`,
   `<meta name="robots" content="${indexable ? 'index,follow' : 'noindex,nofollow'}">`,
-  `<meta property="og:type" content="restaurant">`,
+  `<meta property="og:type" content="website">`,
   `<meta property="og:title" content="${escape(title)}">`,
   `<meta property="og:description" content="${escape(business.description)}">`,
   `<meta property="og:locale" content="uk_UA">`,
@@ -62,7 +66,7 @@ const metadata = [
   ...(image
     ? [
         `<meta property="og:image" content="${escape(image)}">`,
-        `<meta property="og:image:alt" content="Авторська AI-ілюстрація шаверми">`,
+        `<meta property="og:image:alt" content="Шаурма з м’ясом та овочами">`,
         `<meta name="twitter:image" content="${escape(image)}">`,
       ]
     : []),

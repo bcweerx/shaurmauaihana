@@ -1,44 +1,30 @@
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-
-# testing
-/coverage
-
-# next.js
-/.next/
-/.vinext/
-/out/
-
-# misc
-.DS_Store
-*.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# local environment
-.env*
-
-# deployment and generated files
-.vercel
-next-env.d.ts
-/dist/
-/.wrangler/
-/outputs/
-/work/
-# local caches and compilation
+# Dependencies and package caches
+node_modules/
 .pnpm-store/
+# Generated output
+/dist/
+/.prerender/
+/.test-build/
+/coverage/
 *.tsbuildinfo
-.prerender/
-# keep the safe template
+# Local research, imports and archived starter files
+/work/
+/outputs/
+# Deployment state
+/.vercel/
+# Secrets; keep the documented empty template
+.env*
 !.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+# Temporary files and editor/OS noise
+*.log
+*.tmp
+*.bak
+*.swp
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db

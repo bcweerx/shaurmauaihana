@@ -7,7 +7,7 @@ export function Hero({ onOrder }: { onOrder: () => void }) {
       <section className="hero wrap" aria-labelledby="hero-title">
         <div className="hero-copy">
           <div className="eyebrow">
-            <span /> ТВОЯ ЗУПИНКА НА ШАВЕРМУ
+            <span /> {business.name}
           </div>
           <h1 id="hero-title">
             ГОЛОДНИЙ?
@@ -15,7 +15,7 @@ export function Hero({ onOrder }: { onOrder: () => void }) {
             ТОБІ <span>ДО АЙХАНА.</span>
           </h1>
           <p>
-            Шаверма, прогулянка, Одеса.
+            Шаурма, прогулянка, Одеса.
             <br />
             Зустрінемось біля парку Марка Твена.
           </p>
@@ -40,7 +40,7 @@ export function Hero({ onOrder }: { onOrder: () => void }) {
             src="/shawarma-hero.webp"
             srcSet="/shawarma-hero-small.webp 768w, /shawarma-hero.webp 1536w"
             sizes="(max-width:720px) 100vw, 65vw"
-            alt="Шаверма з підсмаженим лавашем, м’ясом та овочами — авторська AI-ілюстрація"
+            alt="Шаурма з підсмаженим лавашем, м’ясом та овочами"
             width="1536"
             height="1024"
             fetchPriority="high"
@@ -54,9 +54,6 @@ export function Hero({ onOrder }: { onOrder: () => void }) {
             </strong>
             <span>НАСТРІЙ</span>
           </div>
-          <span className="photo-note">
-            Авторська AI-ілюстрація · не фото закладу
-          </span>
         </div>
         <div className="hero-bottom">
           <span>ЗАХОДЬ ПО ДОРОЗІ</span>
@@ -68,7 +65,7 @@ export function Hero({ onOrder }: { onOrder: () => void }) {
       <div className="ticker" aria-hidden="true">
         <span>ЗАГОРНУТО З НАСТРОЄМ</span>
         <span>✳</span>
-        <span>ШАВЕРМА АЙХАНА</span>
+        <span>{business.name}</span>
         <span>✳</span>
         <span>ОДЕСА, ЦЕ ДЛЯ ТЕБЕ</span>
         <span>✳</span>

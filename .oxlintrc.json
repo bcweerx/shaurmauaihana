@@ -22,15 +22,12 @@
     "typeCheck": true
   },
   "ignorePatterns": [
-    ".next/**",
-    ".vinext/**",
-    "out/**",
     "build/**",
     "dist/**",
     "coverage/**",
-    "next-env.d.ts",
     "work/**",
     ".prerender/**",
+    ".test-build/**",
     ".pnpm-store/**"
   ],
   "rules": {

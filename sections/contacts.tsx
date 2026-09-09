@@ -5,7 +5,7 @@ export function Contacts() {
     <section className="place-section" id="place" aria-labelledby="place-title">
       <div className="wrap place-grid">
         <div>
-          <p className="eyebrow">03 / ПОБАЧИМОСЬ В ОДЕСІ</p>
+          <p className="eyebrow">ПОБАЧИМОСЬ В ОДЕСІ</p>
           <h2 id="place-title">
             ПАРК ПОРУЧ.
             <br />
@@ -76,7 +76,7 @@ export function Contacts() {
         <div className="wrap embedded-map">
           <iframe
             src={business.mapEmbedUrl}
-            title="Розташування Шаверми Айхана"
+            title={`Розташування — ${business.name}`}
             loading="lazy"
             referrerPolicy="no-referrer"
           />

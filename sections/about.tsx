@@ -7,7 +7,7 @@ export function About() {
       aria-labelledby="about-title"
     >
       <div>
-        <p className="eyebrow">02 / ТРОХИ ПРО НАС</p>
+        <p className="eyebrow">ТРОХИ ПРО НАС</p>
         <h2 id="about-title">
           СМАКУЄ
           <br />
@@ -17,7 +17,7 @@ export function About() {
       <div>
         <p>{business.description}</p>
         <p>
-          Зайти по шаверму, зібрати обід або вибрати щось на компанію — знайди
+          Зайти по шаурму, зібрати обід або вибрати щось на компанію — знайди
           свій варіант у меню.
         </p>
         <a href="#menu" className="text-link">

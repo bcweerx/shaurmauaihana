@@ -6,9 +6,8 @@ export function Brand() {
         А<span>•</span>
       </span>
       <span>
-        ШАВЕРМА
-        <br />
-        <b>АЙХАНА</b>
+        Шаурма <br />
+        <b>у Айхана</b>
       </span>
     </a>
   );

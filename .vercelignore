@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.prerender/
+.test-build/
+.pnpm-store/
+work/
+outputs/
+.git/
+.env*
+!.env.example
+*.tsbuildinfo
+*.log

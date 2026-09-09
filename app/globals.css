@@ -1,9 +1,9 @@
 @import 'tailwindcss' source(none);
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 @source '../components';
 @source '../sections';
 @source './';
-@import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -306,14 +306,6 @@ h2 span {
   margin: 7px 0;
   text-align: center;
   letter-spacing: -1px;
-}
-.photo-note {
-  position: absolute;
-  right: 7%;
-  bottom: 17px;
-  z-index: 3;
-  font-size: 10px;
-  color: #94998c;
 }
 .hero-bottom {
   position: absolute;
@@ -1071,11 +1063,6 @@ h2 span {
   .food-sticker span {
     font-size: 8px;
   }
-  .photo-note {
-    right: 23px;
-    bottom: 17px;
-    font-size: 9px;
-  }
   .hero-bottom {
     font-size: 8px;
     letter-spacing: 1px;
@@ -1252,7 +1239,7 @@ html {
   scroll-padding-top: 105px;
 }
 body {
-  min-width: 320px;
+  min-width: 0;
 }
 #top {
   overflow: clip;
@@ -1347,12 +1334,6 @@ body {
 .hero-bottom {
   font-size: 12px;
   letter-spacing: 1px;
-}
-.photo-note {
-  font-size: 12px;
-  background: #171a17c9;
-  padding: 5px 8px;
-  border-radius: 3px;
 }
 .section-aside {
   font-size: 16px;
@@ -1886,11 +1867,6 @@ body {
   }
   .hero-actions .secondary-cta {
     padding: 12px 14px !important;
-  }
-  .photo-note {
-    font-size: 11px;
-    right: 20px;
-    bottom: 16px;
   }
   .hero-bottom {
     font-size: 10px;
