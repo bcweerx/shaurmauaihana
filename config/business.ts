@@ -1,0 +1,30 @@
+import config from './business.json';
+export type OrderChannel = 'none' | 'phone' | 'telegram' | 'whatsapp';
+export interface Business {
+  name: string;
+  description: string;
+  address: string;
+  city: string;
+  country: string;
+  postalCode: string | null;
+  coordinates: { latitude: number; longitude: number } | null;
+  landmark: string;
+  phone: string | null;
+  email: string | null;
+  telegram: string | null;
+  whatsapp: string | null;
+  instagram: string | null;
+  openingHours: string | null;
+  googleMapsUrl: string | null;
+  mapEmbedUrl: string | null;
+  currency: string;
+  locale: string;
+  language: string;
+  timezone: string;
+  siteUrl: string | null;
+  socialImage: string | null;
+  ownerVerified: boolean;
+  indexable: boolean;
+  orderChannel: OrderChannel;
+}
+export const business = config as Business;
