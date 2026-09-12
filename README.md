@@ -72,3 +72,4 @@ SITE_URL — HTTPS origin без пути/параметров. Без доме�
 pnpm test: корзина, меню, SSR, endpoint с mock Redis/Telegram — валидация, цены/тарифы, конкурентные повторы, лимиты, таймауты, сбои. pnpm build: prerender, метаданные, изоляция сборки. Это не заменяет smoke test с реальными credentials после размещения. Исторические docs/FRONTEND-BEFORE-MVP.md и docs/PREVIEW.md описывают прежнюю frontend-версию.
 
 Контракты: [Vercel Node.js Functions](https://vercel.com/docs/functions/runtimes/node-js), [Telegram sendMessage](https://core.telegram.org/bots/api#sendmessage), [Upstash Redis REST](https://upstash.com/docs/redis/features/restapi). Аудит: docs/MVP-AUDIT.md.
+
