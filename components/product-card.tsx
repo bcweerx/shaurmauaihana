@@ -5,6 +5,7 @@ import { useCart } from './cart-context';
 import { Quantity } from './quantity';
 import { Button } from './ui/button';
 import { formatMoney } from '../lib/format';
+import { ordering } from '../config/ordering';
 export function ProductCard({
   product,
   onAdded,
@@ -65,14 +66,14 @@ export function ProductCard({
         )}
         <div className="dish-bottom">
           <div>
-            <span
+            {!ordering.menuVerified && <span
               className="old-price"
               aria-label={`Ціна без акції Glovo: ${formatMoney(product.regularPrice)}`}
             >
               {formatMoney(product.regularPrice)}
-            </span>
+            </span>}
             <span className="price">{formatMoney(product.price)}</span>
-            <span className="price-source">ціна Glovo</span>
+            <span className="price-source">{ordering.menuVerified ? 'ціна закладу' : 'ціна Glovo'}</span>
           </div>
           {quantity ? (
             <Quantity

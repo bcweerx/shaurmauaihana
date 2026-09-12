@@ -1,4 +1,5 @@
 import test from 'node:test';
+import './orders.test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { render } from '../scripts/prerender';

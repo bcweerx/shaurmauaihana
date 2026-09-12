@@ -9,12 +9,23 @@ const rawUrl =
 let siteUrl = null;
 if (rawUrl) {
   const parsed = new URL(rawUrl);
-  if (parsed.protocol !== 'https:' || parsed.username || parsed.password)
+  if (
+    parsed.protocol !== 'https:' ||
+    parsed.username ||
+    parsed.password ||
+    parsed.pathname !== '/' ||
+    parsed.search ||
+    parsed.hash
+  )
     throw Error('SITE_URL must be a public HTTPS URL');
   siteUrl = parsed.origin;
 }
 const indexable = Boolean(
-  siteUrl && business.ownerVerified && business.indexable,
+  siteUrl &&
+  business.ownerVerified &&
+  business.indexable &&
+  process.env.SEO_INDEXING_ENABLED === 'true' &&
+  process.env.VERCEL_ENV === 'production',
 );
 const escape = (value) =>
   String(value)

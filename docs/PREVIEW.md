@@ -1,6 +1,6 @@
 # Подготовка preview — 09.09.2026
 
-Статус: временный публичный preview создан и проверен после входа в Vercel. Production deployment, custom domain и индексация не включались.
+Статус: временный preview создан и проверен в браузере с сессией Vercel. Чистый браузер перенаправляется на вход в Vercel; анонимная публичность не подтверждена. Production deployment, custom domain и индексация не включались.
 
 ## Обязательные правки бренда
 
@@ -29,9 +29,9 @@
 
 После авторизации выполнен только временный preview deployment:
 
-- URL: https://preview-source-auparodre-artemkovko-3474.vercel.app/
-- inspect: https://vercel.com/artemkovko-3474/preview-source/3yxudDKtJSCtguRVqxPbXuUuoDsd
-- deployment id: `dpl_3yxudDKtJSCtguRVqxPbXuUuoDsd`
+- URL: https://preview-source-q859tra8i-artemkovko-3474.vercel.app/
+- inspect: https://vercel.com/artemkovko-3474/preview-source/6BB1ahKho6ccxJkcZapwH1swAvGE
+- deployment id: `dpl_6BB1ahKho6ccxJkcZapwH1swAvGE`
 - состояние: `READY`, `target: null`
 - custom domain и `--prod` не использовались
 - build: Vite / `pnpm run build` / `dist`
@@ -49,4 +49,16 @@
 
 Финальный прогон выполнен после правок бренда, удаления подписи и закрепления Node 24.x. Предупреждений о версии Node в нём нет. Состояние сохранено: `ownerVerified: false`, `indexable: false`, `orderChannel: "none"`; HTML `noindex,nofollow`, robots `Disallow: /`. Backend, БД, авторизация посетителей, платежи и Telegram-бот не добавлены.
 
-Git: checkpoint `de56ac7`; изменения cleanup и текущего этапа находятся в рабочем дереве, нового коммита или push не было. Служебный результат CLI dry-run хранится только в игнорируемом `work/`; токены в исходники не записаны.
+Git: последняя сохранённая полировка — `d706d29`. Мобильные исправления полосы и адреса находятся в рабочем дереве; в рамках этих двух исправлений commit и push не выполнялись. Служебные QA-скрипты и снимки находятся только в игнорируемом `work/mobile-qa/`; токены в исходники не записаны.
+
+## Мобильные исправления полосы и адреса
+
+Изменён только CSS интерфейса, `app/globals.css`, внутри `@media (max-width: 720px)`:
+
+- `.ticker`: раньше `white-space: nowrap` и несколько текстовых элементов обрезали следующую фразу, хотя внешний контейнер уже имел `overflow: hidden`. На телефоне показывается один целый слоган; допустим перенос при увеличении шрифта, размер ограничен `clamp()`, контейнер не расширяет страницу. Глобальное скрытие overflow не добавлялось.
+- `.address-card`: абсолютные иконка и кнопка не резервировали место для текста. Теперь две колонки `minmax(0, 1fr) 48px`, `min-width: 0`, иконки в потоке grid и переносимый адрес с `clamp(1.5rem, 6.8vw, 2.125rem)`.
+- Локальные `pnpm typecheck`, `pnpm lint`, `pnpm test` (8/8), `pnpm build` — PASS. Vercel — READY.
+- Опубликованный preview проверен при 320/375/390/430/768/1440 px в авторизованном браузере: `document.documentElement.scrollWidth === clientWidth` на каждой ширине; мобильные текстовые колонки не пересекаются с иконкой и кнопкой; console errors отсутствуют.
+- Локальная production-сборка дополнительно проверена с удвоением вычисленного размера текста обоих компонентов на всех четырёх мобильных ширинах: PASS. Это имитация увеличенного текста, не тест физического iPhone/Safari.
+- На 1440 px сравнены вычисленные стили и геометрия обоих компонентов с предыдущим preview: совпадают (точность 0.01 px). Desktop-правила не изменены.
+- `noindex,nofollow` проверен на preview; локальный `robots.txt` содержит `Disallow: /`. Флаги бизнеса и канал заказа не менялись.

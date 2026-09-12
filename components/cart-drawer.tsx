@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ShoppingBag, X, Check, ArrowUpRight, Trash2 } from 'lucide-react';
+import { ShoppingBag, X, ArrowUpRight, Trash2 } from 'lucide-react';
 import {
   Sheet,
   SheetContent,
@@ -10,9 +10,10 @@ import {
 import { Button } from './ui/button';
 import { useCart } from './cart-context';
 import { Quantity } from './quantity';
-import { business } from '../config/business';
+import { Checkout } from './checkout';
+import { ordering } from '../config/ordering';
 import { formatMoney } from '../lib/format';
-import { orderDestination, orderText } from '../lib/order';
+
 export function CartDrawer({
   open,
   onOpenChange,
@@ -22,21 +23,10 @@ export function CartDrawer({
 }) {
   const { lines, total, count, change, remove, clear } = useCart();
   const [review, setReview] = useState(false);
-  const [copiedText, setCopiedText] = useState('');
-  const [copyFailed, setCopyFailed] = useState(false);
-  const text = orderText(lines, total, business.name);
-  const destination = orderDestination(business, text);
-  const copied = copiedText === text;
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(text);
-      setCopiedText(text);
-      setCopyFailed(false);
-    } catch {
-      setCopyFailed(true);
-    }
-  }
+  const [receipt, setReceipt] = useState('');
+  const [busy, setBusy] = useState(false);
   function close(next: boolean) {
+    if (busy) return;
     onOpenChange(next);
     if (!next) setReview(false);
   }
@@ -59,7 +49,20 @@ export function CartDrawer({
         <SheetDescription className="sheet-description">
           Перевір вибір перед замовленням.
         </SheetDescription>
-        {!count ? (
+        {receipt ? (
+          <div className="checkout-options" aria-live="polite">
+            <p>{receipt}</p>
+            <Button
+              className="primary-link"
+              onClick={() => {
+                setReceipt('');
+                close(false);
+              }}
+            >
+              До меню
+            </Button>
+          </div>
+        ) : !count ? (
           <div className="empty-cart">
             <ShoppingBag size={54} strokeWidth={1} />
             <h3>Поки що порожньо</h3>
@@ -90,10 +93,11 @@ export function CartDrawer({
                     <Quantity
                       name={product.name}
                       quantity={quantity}
-                      onChange={(delta) => change(product.id, delta)}
+                      onChange={(delta) => { if (!busy) change(product.id, delta); }}
                     />
                     <Button
                       className="remove-item"
+                      disabled={busy}
                       aria-label={`Видалити: ${product.name}`}
                       onClick={() => remove(product.id)}
                     >
@@ -109,75 +113,23 @@ export function CartDrawer({
                 <strong>{formatMoney(total)}</strong>
               </div>
               <p>
-                Розрахунок за цінами Glovo, без доставки. Остаточну суму та
-                наявність підтверджує заклад.
+                {ordering.menuVerified
+                  ? 'Сума страв без доставки.'
+                  : 'Попередні ціни Glovo. Меню та ціни очікують підтвердження закладу.'}
               </p>
               {!review ? (
                 <Button
                   className="primary-link"
                   onClick={() => setReview(true)}
                 >
-                  {destination ? 'Перейти до замовлення' : 'Сформувати список'}{' '}
-                  <ArrowUpRight />
+                  {'Перейти до замовлення'} <ArrowUpRight />
                 </Button>
               ) : (
-                <div className="checkout-options">
-                  <h3>
-                    {destination
-                      ? 'Залишився один крок'
-                      : 'Список до замовлення готовий'}
-                  </h3>
-                  <p>
-                    {destination
-                      ? destination.autoFill
-                        ? 'Відкриється чат із вашим списком. Надішліть повідомлення та дочекайтеся підтвердження.'
-                        : 'Скопіюйте список і передайте його закладу. Замовлення підтверджується у розмові.'
-                      : 'Канал зв’язку ще не підтверджений. Скопіюйте список або завітайте за адресою. Нічого не надіслано.'}
-                  </p>
-                  <Button className="primary-link" onClick={copy}>
-                    {copied ? 'Список скопійовано' : 'Скопіювати список'}
-                    {copied ? <Check /> : <ArrowUpRight />}
-                  </Button>
-                  {destination && (
-                    <a
-                      className="order-link"
-                      href={destination.url}
-                      target={
-                        destination.url.startsWith('tel:')
-                          ? undefined
-                          : '_blank'
-                      }
-                      rel="noreferrer"
-                    >
-                      {destination.label} <ArrowUpRight size={18} />
-                    </a>
-                  )}
-                  {!destination && (
-                    <a
-                      className="order-link"
-                      href="#place"
-                      onClick={() => close(false)}
-                    >
-                      Адреса закладу <ArrowUpRight size={18} />
-                    </a>
-                  )}
-                  {copyFailed && (
-                    <label className="manual-copy">
-                      Скопіюйте текст вручну
-                      <textarea
-                        readOnly
-                        value={text}
-                        onFocus={(event) => event.target.select()}
-                      />
-                    </label>
-                  )}
-                  <output aria-live="polite" className="sr-only">
-                    {copied ? 'Список скопійовано' : ''}
-                  </output>
-                </div>
+                <Checkout onSuccess={setReceipt} onBusyChange={setBusy} />
               )}
               <Button
                 className="clear-cart"
+                disabled={busy}
                 onClick={() => {
                   clear();
                   setReview(false);

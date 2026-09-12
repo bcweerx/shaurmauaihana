@@ -3,6 +3,7 @@ import { Search, X, ArrowDown } from 'lucide-react';
 import { categories, products, menuSource, menuCapturedAt } from '../data/menu';
 import { Button } from '../components/ui/button';
 import { ProductCard } from '../components/product-card';
+import { ordering } from '../config/ordering';
 export function MenuSection({ onAdded }: { onAdded: (name: string) => void }) {
   const [category, setCategory] = useState('Шаурма');
   const [query, setQuery] = useState('');
@@ -39,13 +40,13 @@ export function MenuSection({ onAdded }: { onAdded: (name: string) => void }) {
         </p>
       </div>
       <div className="menu-notice">
-        <span className="status-pill">МЕНЮ GLOVO</span>
+        <span className="status-pill">{ordering.menuVerified ? 'МЕНЮ ЗАКЛАДУ' : 'МЕНЮ GLOVO'}</span>
         <p>
-          Ціни з Glovo від {menuCapturedAt.split('-').reverse().join('.')}. У
+          {ordering.menuVerified ? 'Меню та ціни підтверджені закладом.' : <>Ціни з Glovo від {menuCapturedAt.split('-').reverse().join('.')}. У
           закладі сума може відрізнятися.{' '}
           <a href={menuSource} target="_blank" rel="noreferrer">
             Джерело меню ↗
-          </a>
+          </a></>}
         </p>
       </div>
       <div className="menu-tools">
